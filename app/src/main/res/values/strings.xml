@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Chvz</string>
+    <string name="editText_hint">Enter message...</string>
+    <string name="button_send">Send!</string>
 </resources>
