@@ -1,6 +1,9 @@
 package com.rainbow.chvz;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,5 +27,38 @@ public class FirstActivity extends AppCompatActivity {
         String m = e.getText().toString();
         i.putExtra( this.getPackageName() + EXTRA_MSG, m );
         startActivity( i );
+    }
+
+    /** Method to be called when user presses Back button */
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder b;
+//        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP )
+//            b = new AlertDialog.Builder(this, R.style.AppTheme);
+//        else
+            b = new AlertDialog.Builder(this);
+        b.setTitle( R.string.dialog_exit_title );
+        b.setMessage( R.string.dialog_exit_question );
+        b.setPositiveButton(
+                R.string.dialog_yes,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                    }
+                }
+        );
+        b.setNegativeButton(
+                R.string.dialog_no,
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // 'No' option has been tapped
+                    }
+                }
+        );
+
+        AlertDialog d = b.create();
+        d.show();
     }
 }

@@ -2,4 +2,8 @@
     <string name="app_name">Chvz</string>
     <string name="editText_hint">Enter message...</string>
     <string name="button_send">Send!</string>
+    <string name="dialog_exit_title">Exit</string>
+    <string name="dialog_exit_question">Do you want to exit?</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
 </resources>
