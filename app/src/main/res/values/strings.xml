@@ -6,4 +6,5 @@
     <string name="dialog_exit_question">Do you want to exit?</string>
     <string name="dialog_yes">Yes</string>
     <string name="dialog_no">No</string>
+    <string name="toast_empty_text">Please enter a message...</string>
 </resources>

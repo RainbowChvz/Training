@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -19,11 +21,19 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     /** Method to be called when user taps Send button */
-    public void sendMessage( View view ) {
+    public void onSend( View view ) {
         // Do something when button is tapped
         Intent i = new Intent( this, SecondActivity_DisplayMsg.class );
         EditText e = (EditText) findViewById( R.id.editText );
         String m = e.getText().toString();
+
+        // If Send button is tapped without entering a message, display a toast notification
+        if ( TextUtils.isEmpty( m ) ) {
+            Toast.makeText(this, R.string.toast_empty_text, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // If a message has been entered, go to next activity
         i.putExtra( this.getPackageName() + EXTRA_MSG, m );
         startActivity( i );
     }
