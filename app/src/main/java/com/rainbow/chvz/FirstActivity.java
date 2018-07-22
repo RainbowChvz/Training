@@ -2,7 +2,6 @@ package com.rainbow.chvz;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,11 +31,7 @@ public class FirstActivity extends AppCompatActivity {
     /** Method to be called when user presses Back button */
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder b;
-//        if ( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP )
-//            b = new AlertDialog.Builder(this, R.style.AppTheme);
-//        else
-            b = new AlertDialog.Builder(this);
+        AlertDialog.Builder b = new AlertDialog.Builder(this);
         b.setTitle( R.string.dialog_exit_title );
         b.setMessage( R.string.dialog_exit_question );
         b.setPositiveButton(
