@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstActivity">
+        <activity android:name=".FirstActivity"
+            android:screenOrientation="sensorLandscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity_DisplayMsg"
+            android:screenOrientation="sensorLandscape"
             android:parentActivityName=".FirstActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
