@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FirstActivity"
-            android:screenOrientation="sensorLandscape" >
+            android:screenOrientation="unspecified"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,8 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity_DisplayMsg"
-            android:screenOrientation="sensorLandscape"
-            android:parentActivityName=".FirstActivity" >
+            android:screenOrientation="unspecified"
+            android:parentActivityName=".FirstActivity"
+            >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".FirstActivity"
