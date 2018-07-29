@@ -22,6 +22,42 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first);
     }
 
+    @Override
+    protected void onRestart() {
+        Log.i("LifeCycle", "onRestart" );
+        super.onRestart();
+    }
+
+    @Override
+    protected void onStart() {
+        Log.i("LifeCycle", "onStart" );
+        super.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i("LifeCycle", "onResume" );
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.i("LifeCycle", "onPause" );
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        Log.i("LifeCycle", "onStop" );
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        Log.i("LifeCycle", "onDestroy" );
+        super.onDestroy();
+    }
+
     /** Method to be called when user taps Send button */
     public void onSend( View view ) {
         // Do something when button is tapped
