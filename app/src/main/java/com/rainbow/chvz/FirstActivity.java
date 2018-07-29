@@ -14,6 +14,10 @@ import android.widget.Toast;
 public class FirstActivity extends AppCompatActivity {
 
     public static final String EXTRA_MSG = "MESSAGE";
+    public static final String BOOLEAN_DIALOG = "EXIT_DIALOG_SHOWING";
+
+    private static AlertDialog exitDialog = null;
+    private static boolean b_isExitDialogShowing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,21 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onRestoreInstanceState( Bundle savedInstanceState ) {
+        Log.i("LifeCycle", "onRestoreInstanceState: Bundle = " + savedInstanceState );
+        super.onRestoreInstanceState( savedInstanceState );
+
+        if ( savedInstanceState.getBoolean( BOOLEAN_DIALOG, false ) )
+            createExitDialog();
+    }
+
+    @Override
     protected void onResume() {
         Log.i("LifeCycle", "onResume" );
         super.onResume();
+
+        if ( isExitDialogCreated() )
+            showExitDialog();
     }
 
     @Override
@@ -53,9 +69,19 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onSaveInstanceState ( Bundle outState) {
+        outState.putBoolean( BOOLEAN_DIALOG, isExitDialogShowing() );
+
+        super.onSaveInstanceState( outState );
+        Log.i("LifeCycle", "onSaveInstanceState: Bundle = " + outState );
+    }
+
+    @Override
     protected void onDestroy() {
         Log.i("LifeCycle", "onDestroy" );
         super.onDestroy();
+
+        clearExitDialogShowing();
     }
 
     /** Method to be called when user taps Send button */
@@ -79,6 +105,32 @@ public class FirstActivity extends AppCompatActivity {
     /** Method to be called when user presses Back button */
     @Override
     public void onBackPressed() {
+        Log.i("LifeCycle", "onBackPressed" );
+        if ( !isExitDialogShowing() ) {
+            if (!isExitDialogCreated())
+                createExitDialog();
+            showExitDialog();
+        }
+    }
+
+    public boolean isExitDialogCreated () {
+        return exitDialog != null;
+    }
+
+    public boolean isExitDialogShowing () {
+        return b_isExitDialogShowing;
+    }
+
+    private void clearExitDialogShowing () {
+        setExitDialogShowing( false );
+        exitDialog = null;
+    }
+
+    public void setExitDialogShowing ( boolean showing ) {
+        b_isExitDialogShowing = showing;
+    }
+
+    private void createExitDialog() {
         AlertDialog.Builder b = new AlertDialog.Builder(this);
         b.setTitle( R.string.dialog_exit_title );
         b.setMessage( R.string.dialog_exit_question );
@@ -100,8 +152,18 @@ public class FirstActivity extends AppCompatActivity {
                     }
                 }
         );
+        exitDialog = b.create();
+        exitDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                        @Override
+                                        public void onDismiss(DialogInterface dismiss) {
+                                            clearExitDialogShowing();
+                                        }
+                                    }
+        );
+    }
 
-        AlertDialog d = b.create();
-        d.show();
+    private void showExitDialog () {
+        exitDialog.show();
+        setExitDialogShowing( true );
     }
 }

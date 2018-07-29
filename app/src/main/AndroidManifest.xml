@@ -10,9 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FirstActivity"
-            android:screenOrientation="unspecified"
-            android:configChanges="orientation|screenSize"
-            >
+            android:screenOrientation="unspecified" >
+            <!-- android:configChanges="orientation|screenSize" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
