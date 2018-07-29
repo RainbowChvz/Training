@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FirstActivity"
-            android:screenOrientation="unspecified" >
+        <activity
+            android:name=".FirstActivity"
+            android:screenOrientation="unspecified">
+
             <!-- android:configChanges="orientation|screenSize" -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,14 +20,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity_DisplayMsg"
-            android:screenOrientation="unspecified"
+        <activity
+            android:name=".SecondActivity_DisplayMsg"
             android:parentActivityName=".FirstActivity"
-            >
+            android:screenOrientation="unspecified">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".FirstActivity"
-            />
+                android:value=".FirstActivity" />
+        </activity>
+        <activity android:name=".ThirdActivity_Fragment">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
