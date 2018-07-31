@@ -25,6 +25,12 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(mViewPager);
     }
 
+    @Override
+    public void onBackPressed() {
+        if ( goBackViewPager() < 0)
+            super.onBackPressed();
+    }
+
     private void setupViewPager (ViewPager viewPager) {
         SectionsStatePagerAdapter adapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
         adapter.addFragment( new Fragment1(), "Fragment 1");
@@ -35,5 +41,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void setViewPager ( int fragmentNumber) {
         mViewPager.setCurrentItem( fragmentNumber );
+    }
+
+    public int getViewPager () {
+        return mViewPager.getCurrentItem();
+    }
+
+    private int goBackViewPager() {
+        int item = getViewPager();
+        if ( item-- > 0 )
+            mViewPager.setCurrentItem( item );
+        return item;
     }
 }
