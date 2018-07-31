@@ -35,7 +35,7 @@ public class Fragment3 extends Fragment {
         btnNavFrag1.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Going to Fragment 1", Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).showToast("Going to Fragment 1");
                 // Navigate to fragment method called
                 ((MainActivity)getActivity()).setViewPager(0);
             }
@@ -43,7 +43,7 @@ public class Fragment3 extends Fragment {
         btnNavFrag2.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Going to Fragment 2", Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).showToast("Going to Fragment 2");
                 // Navigate to fragment method called
                 ((MainActivity)getActivity()).setViewPager(1);
             }
@@ -51,7 +51,7 @@ public class Fragment3 extends Fragment {
         btnNavFrag3.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Going to Fragment 3", Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).showToast("Going to Fragment 3");
                 // Navigate to fragment method called
                 ((MainActivity)getActivity()).setViewPager(2);
             }
@@ -59,7 +59,7 @@ public class Fragment3 extends Fragment {
         btnNavSecondActivity.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Going to Second Activity", Toast.LENGTH_SHORT).show();
+                ((MainActivity)getActivity()).showToast("Going to Second Activity");
                 Intent intent = new Intent(getActivity(), SecondActivity.class);
                 startActivity(intent);
             }
