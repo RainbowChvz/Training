@@ -43,10 +43,10 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textTitle"
+        android:layout_below="@+id/btnNavFrag3"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:id="@+id/btnNavFrag3"
+        android:id="@+id/btnNavSecondActivity"
         android:text="Go to Second Activity" />
 
 </RelativeLayout>
