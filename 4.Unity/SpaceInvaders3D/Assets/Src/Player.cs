@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+	public GameObject Bullet1;
+	Stopwatch shotDelay;
 	
 	CharacterController ship;
 	float motionInput;
@@ -13,6 +16,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         ship = GetComponent<CharacterController>();
+		
+		shotDelay = new Stopwatch();
     }
 
     // Update is called once per frame
@@ -31,8 +36,20 @@ public class Player : MonoBehaviour
 		
 		motionInput = Input.GetAxis("Vertical");
 		if ( motionInput > 0 )
+		// if ( Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) )
 		{
-			// TODO shooting
+			if ( shotDelay.IsRunning && shotDelay.ElapsedMilliseconds < 250 )
+				return;
+			GameObject shot = Instantiate(Bullet1, transform.position, Quaternion.identity);
+			shot.GetComponent<Rigidbody>().AddForce(Vector3.up * 1500);
+			
+			shotDelay = Stopwatch.StartNew();
+			
+			Destroy(shot, 1);
+		}
+		else
+		{
+			shotDelay.Reset();
 		}
     }
 }
