@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 		if (!Input.anyKey)
 			return;
 
-		motionInput = Input.GetAxis("Horizontal");
+		motionInput = Input.GetAxis( GameCore.STR_AXIS_DIRECTION_X );
 		if ( motionInput != 0 )
 		{
 			distance = new Vector3(motionInput, 0, 0);
@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
 			ship.Move(distance * Time.deltaTime * 35);
 		}
 		
-		motionInput = Input.GetAxis("Vertical");
+		motionInput = Input.GetAxis(GameCore.STR_AXIS_DIRECTION_Y);
 		if ( motionInput > 0 )
 		// if ( Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) )
 		{

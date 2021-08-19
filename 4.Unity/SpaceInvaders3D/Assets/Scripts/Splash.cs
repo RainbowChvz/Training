@@ -10,7 +10,7 @@ public class Splash : MonoBehaviour
 	int splashTime;
 	
 	[SerializeField]
-	string nextScene = "2_Title";
+	string nextScene = GameCore.STR_SCENE_TITLE;
 	
     // Start is called before the first frame update
     void Start()

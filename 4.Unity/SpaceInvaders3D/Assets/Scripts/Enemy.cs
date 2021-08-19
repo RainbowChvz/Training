@@ -26,17 +26,17 @@ public class Enemy : MonoBehaviour
 	
 	protected bool HasCollision ( Collider collideWith )
 	{
-		if ( collideWith.gameObject.CompareTag("Bullet1") )
+		if ( collideWith.gameObject.CompareTag( GameCore.STR_GAMEOBJ_TAG_AMMO ) )
 		{
 			Destroy( collideWith.gameObject );
 			collisionCooldown = Stopwatch.StartNew();
 			return true;
 		}
 		
-		if ( collideWith.gameObject.name == "Player" )
+		if ( collideWith.gameObject.name == GameCore.STR_GAMEOBJ_NAME_HERO )
 		{
 			Destroy( collideWith.gameObject );
-			SceneManager.LoadScene( "4_End", LoadSceneMode.Single );
+			SceneManager.LoadScene( GameCore.STR_SCENE_END, LoadSceneMode.Single );
 		}
 
 		return false;		
