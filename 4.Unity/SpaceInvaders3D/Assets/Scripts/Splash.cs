@@ -9,6 +9,9 @@ public class Splash : MonoBehaviour
 	[Min(3)]
 	int splashTime;
 	
+	[SerializeField]
+	string nextScene = "2_Title";
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,6 @@ public class Splash : MonoBehaviour
     void Update()
     {
         if ( Time.realtimeSinceStartup > splashTime )
-			SceneManager.LoadScene( "SCR_Gameplay", LoadSceneMode.Single );
+			SceneManager.LoadScene( nextScene, LoadSceneMode.Single );
     }
 }

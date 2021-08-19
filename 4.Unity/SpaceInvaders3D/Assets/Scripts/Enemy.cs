@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -33,7 +34,10 @@ public class Enemy : MonoBehaviour
 		}
 		
 		if ( collideWith.gameObject.name == "Player" )
+		{
 			Destroy( collideWith.gameObject );
+			SceneManager.LoadScene( "4_End", LoadSceneMode.Single );
+		}
 
 		return false;		
 	}
