@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 	CharacterController enemy;
 	// Vector3 distance = Vector3.zero;
 	Vector3 distance = new Vector3(0, -1, 0);
+	Stopwatch collisionCooldown = new Stopwatch();
 	
     // Start is called before the first frame update
     protected void Start()
@@ -27,6 +28,7 @@ public class Enemy : MonoBehaviour
 		if ( collideWith.gameObject.CompareTag("Bullet1") )
 		{
 			Destroy( collideWith.gameObject );
+			collisionCooldown = Stopwatch.StartNew();
 			return true;
 		}
 		
@@ -34,5 +36,14 @@ public class Enemy : MonoBehaviour
 			Destroy( collideWith.gameObject );
 
 		return false;		
+	}
+	
+	protected bool IsCoolingDown()
+	{
+		if ( collisionCooldown.IsRunning && collisionCooldown.ElapsedMilliseconds < 250 )
+			return true;
+		
+		collisionCooldown.Reset();
+		return false;
 	}
 }

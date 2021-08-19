@@ -21,6 +21,10 @@ public class EnemyRed : Enemy
 	
 	void OnTriggerEnter( Collider collideWith )
 	{
+		Debug.Log( "Enemy RED! Remaining health: "+remainingHealth );
+		if ( IsCoolingDown () )
+			return;
+		
 		if ( HasCollision ( collideWith ) )
 			remainingHealth--;
 		
