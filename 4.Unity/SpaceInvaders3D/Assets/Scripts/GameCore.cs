@@ -2,31 +2,25 @@ using UnityEngine;
 
 public class GameCore : MonoBehaviour
 {
-	// The GameObject to instantiate.
-	public GameObject entityToSpawn;
 
-	// An instance of the ScriptableObject defined above.
+	public GameObject enemy;
 	public LevelMetaData levelValues;
 	
 	void Start()
 	{
-		SpawnEntities();
+		LoadEnemies();
 	}
 
-	void SpawnEntities()
+	void LoadEnemies()
 	{
-		int currentSpawnPointIndex = 0;
+		int currentEnemyCoordIndex = 0;
 
 		for (int i = 1; i <= levelValues.enemyAmount; i++)
 		{
-			// Creates an instance of the prefab at the current spawn point.
-			GameObject currentEntity = Instantiate(entityToSpawn, levelValues.enemyLayout[currentSpawnPointIndex], Quaternion.identity);
-
-			// Sets the name of the instantiated entity to be the string defined in the ScriptableObject and then appends it with a unique number. 
-			currentEntity.name = levelValues.enemyPrefab + i;
-
-			// Moves to the next spawn point index. If it goes out of range, it wraps back to the start.
-			currentSpawnPointIndex = (currentSpawnPointIndex + 1) % levelValues.enemyLayout.Length;
+			GameObject currentEnemy = Instantiate(enemy, levelValues.enemyLayout[currentEnemyCoordIndex], Quaternion.identity);
+			currentEnemy.name = levelValues.enemyPrefab + i;
+			currentEnemyCoordIndex = (currentEnemyCoordIndex + 1) % levelValues.enemyLayout.Length;
 		}
 	}
 }
+

@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e6365fb64c88b45b18733fb9119578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityToSpawn: {fileID: 3757702477956620523, guid: 4f491810ad61c8645a2e1d560763ef9e, type: 3}
+  enemy: {fileID: 3757702477956620523, guid: 4f491810ad61c8645a2e1d560763ef9e, type: 3}
   levelValues: {fileID: 11400000, guid: 68ba3175f8fbc0b43bb471ce5102c499, type: 2}
 --- !u!1 &129568542
 GameObject:
