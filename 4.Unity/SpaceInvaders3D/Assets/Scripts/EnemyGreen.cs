@@ -8,15 +8,16 @@ public class EnemyGreen : Enemy
 	int remainingHealth;
 	
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
+		base.Start();
 		remainingHealth = enemyHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-		
+		base.Update();
     }
 	
 	void OnTriggerEnter( Collider collideWith )

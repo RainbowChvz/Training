@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
 		distance = transform.TransformDirection(distance);
 		enemy.Move(distance * Time.deltaTime);

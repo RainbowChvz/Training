@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 		if ( motionInput > 0 )
 		// if ( Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) )
 		{
-			if ( shotDelay.IsRunning && shotDelay.ElapsedMilliseconds < 250 )
+			if ( shotDelay.IsRunning && shotDelay.ElapsedMilliseconds < 100 )
 				return;
 			GameObject shot = Instantiate(Bullet1, transform.position, Quaternion.identity);
 			shot.GetComponent<Rigidbody>().AddForce(Vector3.up * 1500);

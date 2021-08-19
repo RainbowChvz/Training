@@ -8,7 +8,7 @@ public class EnemyBlue : Enemy
 	int remainingHealth;
 	
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
 		remainingHealth = enemyHealth;
     }
@@ -21,7 +21,6 @@ public class EnemyBlue : Enemy
 	
 	void OnTriggerEnter( Collider collideWith )
 	{
-		Debug.Log( "Enemy BLUE! Remaining health: "+remainingHealth );
 		if ( IsCoolingDown () )
 			return;
 		
