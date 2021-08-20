@@ -34,7 +34,6 @@ public class Enemy : MonoBehaviour
 	
 	void OnTriggerEnter( Collider collideWith )
 	{		
-		UnityEngine.Debug.Log("OnTriggerEnter() enemyRemainingHealth: "+enemyRemainingHealth);
 		if ( collideWith.gameObject.CompareTag( GameCore.STR_GAMEOBJ_TAG_AMMO ) )
 		{
 			Destroy( collideWith.gameObject );
@@ -67,7 +66,6 @@ public class Enemy : MonoBehaviour
 	int GetHealth()
 	{
 		string enemyColor = enemyRenderer.material.ToString();
-		UnityEngine.Debug.Log("GetHealth() enemyColor: "+enemyColor);
 		
 		if ( enemyColor.StartsWith("Green") )
 			return 1;
