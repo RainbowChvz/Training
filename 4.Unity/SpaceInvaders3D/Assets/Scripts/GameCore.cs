@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameCore : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class GameCore : MonoBehaviour
 	public const string	STR_SCENE_GAMEPLAY			= "3.1_Gameplay";
 	public const string	STR_SCENE_CREDITS			= "3.2_Credits";
 	public const string	STR_SCENE_END				= "4_End";
+	public const string	STR_SCENE_PAUSE				= "5_Pause";
 	
 	public const string	STR_LEVELMETADATA_FILENAME	= "Level";
 	public const string	STR_LEVELMETADATA_MENUENTRY	= "Space Invaders/Level";
@@ -27,26 +30,72 @@ public class GameCore : MonoBehaviour
 	// CONSTANTS end
 
 	public GameObject[] enemies = new GameObject[3];
+	GameObject[] enemiesArray;
+	public GameObject buttonPause;
+	
 	public LevelMetaData levelValues;
 	
 	System.Random RNG = null;
+	static bool gamePaused, enemiesHidden;
 	
 	void Start()
 	{
-		LoadEnemies();
+		Button btn0 = buttonPause.GetComponent<Button>();
+		btn0.onClick.AddListener(OnPauseButtonClick);
+		
+		if ( enemiesArray == null )
+			LoadEnemies();
+	}
+	
+	void Update()
+	{
+		if ( Input.GetKeyDown(KeyCode.Escape) )
+			PauseGame();
+		
+		if ( !IsPaused() && enemiesHidden)
+			HideEnemies( false );
+	}
+	
+	void OnPauseButtonClick()
+	{
+		PauseGame();
 	}
 
 	void LoadEnemies()
 	{
 		int currentEnemyCoordIndex = 0;
+		enemiesArray = new GameObject[levelValues.enemyAmount];
 
-		for (int i = 1; i <= levelValues.enemyAmount; i++)
+		for (int i = 0; i < levelValues.enemyAmount; i++)
 		{
-			GameObject currentEnemy = Instantiate(GetRandomEnemy(), levelValues.enemyLayout[currentEnemyCoordIndex], Quaternion.identity);
-			// currentEnemy.name = levelValues.enemyPrefab + i;
-			currentEnemy.name = GameCore.STR_GAMEOBJ_NAME_ENEMY + i;
+			enemiesArray[i] = Instantiate(GetRandomEnemy(), levelValues.enemyLayout[currentEnemyCoordIndex], Quaternion.identity);
+			// enemiesArray[i].name = levelValues.enemyPrefab + i+1;
+			enemiesArray[i].name = GameCore.STR_GAMEOBJ_NAME_ENEMY + i+1;
 			currentEnemyCoordIndex = (currentEnemyCoordIndex + 1) % levelValues.enemyLayout.Length;
 		}
+	}
+	
+	void HideEnemies(bool hidden)
+	{
+		enemiesHidden = hidden;
+		for (int i = 0; i < enemiesArray.Length; i++)
+			if (enemiesArray[i] != null)
+				enemiesArray[i].SetActive( !hidden );
+	}
+	
+	void PauseGame()
+	{
+		if ( IsPaused() )
+			return;
+
+		gamePaused = true;
+		HideEnemies( true );
+		SceneManager.LoadScene( GameCore.STR_SCENE_PAUSE, LoadSceneMode.Additive );
+	}
+
+	public static bool IsPaused()
+	{
+		return gamePaused;
 	}
 	
 	GameObject GetRandomEnemy()
@@ -56,6 +105,21 @@ public class GameCore : MonoBehaviour
 		
 		int randomEnemy = RNG.Next( 0, 3 );
 		return enemies[randomEnemy];
+	}
+	
+	public static void OnASceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		if ( scene.name == GameCore.STR_SCENE_PAUSE )
+		{
+			gamePaused = true;
+			SceneManager.SetActiveScene( scene );
+		}
+	}
+	
+	public static void OnASceneUnloaded()
+	{
+		gamePaused = false;
+		SceneManager.SetActiveScene( SceneManager.GetSceneByName( GameCore.STR_SCENE_GAMEPLAY ) );
 	}
 }
 

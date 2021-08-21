@@ -23,7 +23,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		if (!Input.anyKey)
+		if ( GameCore.IsPaused() )
+			return;
+
+		if ( !Input.anyKey )
 			return;
 
 		motionInput = Input.GetAxis( GameCore.STR_AXIS_DIRECTION_X );
