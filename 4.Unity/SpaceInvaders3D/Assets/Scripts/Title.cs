@@ -15,6 +15,8 @@ public class Title : MonoBehaviour
 		IDX_BUTTON_EXIT
 	};
 	
+	public static int titleSelection;
+	
 	void Start () {
 		Button btn0 = buttonLevel0.GetComponent<Button>();
 		Button btn1 = buttonLevel1.GetComponent<Button>();
@@ -29,6 +31,7 @@ public class Title : MonoBehaviour
 
 	void OnButtonClick(ButtonIndex i)
 	{
+		titleSelection = (int) i;
 		string nextScene = null;
 		switch ( i )
 		{

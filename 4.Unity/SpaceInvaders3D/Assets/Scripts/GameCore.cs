@@ -33,7 +33,7 @@ public class GameCore : MonoBehaviour
 	GameObject[] enemiesArray;
 	public GameObject buttonPause;
 	
-	public LevelMetaData levelValues;
+	LevelMetaData levelValues;
 	
 	System.Random RNG = null;
 	static bool gamePaused, enemiesHidden;
@@ -44,7 +44,10 @@ public class GameCore : MonoBehaviour
 		btn0.onClick.AddListener(OnPauseButtonClick);
 		
 		if ( enemiesArray == null )
+		{
+			SetLevel(Title.titleSelection);
 			LoadEnemies();
+		}
 	}
 	
 	void Update()
@@ -119,7 +122,12 @@ public class GameCore : MonoBehaviour
 	public static void OnASceneUnloaded()
 	{
 		gamePaused = false;
-		SceneManager.SetActiveScene( SceneManager.GetSceneByName( GameCore.STR_SCENE_GAMEPLAY ) );
+		if ( SceneManager.GetSceneByName( GameCore.STR_SCENE_GAMEPLAY ).isLoaded )
+			SceneManager.SetActiveScene( SceneManager.GetSceneByName( GameCore.STR_SCENE_GAMEPLAY ) );
+	}
+	
+	void SetLevel(int idx)
+	{
+		levelValues = Resources.Load<LevelMetaData>(STR_LEVELMETADATA_FILENAME + "_" + idx);
 	}
 }
-
