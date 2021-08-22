@@ -27,16 +27,19 @@ public class GameCore : MonoBehaviour
 	public const int	INT_ENEMY_GREEN_1HP			= 1;
 	public const int	INT_ENEMY_BLUE_2HP			= 2;
 	public const int	INT_ENEMY_RED_3HP			= 3;
+	public const int	INT_SCORE_POINTS_PER_HP		= 10;
 	// CONSTANTS end
 
 	public GameObject[] enemies = new GameObject[3];
 	GameObject[] enemiesArray;
-	public GameObject buttonPause;
+	public GameObject buttonPause, textScore;
+	public static bool scoreRefresh;
 	
 	LevelMetaData levelValues;
 	
 	System.Random RNG = null;
 	static bool gamePaused, enemiesHidden;
+	static int score, highScore, prevHighScore;
 	
 	void Start()
 	{
@@ -45,6 +48,9 @@ public class GameCore : MonoBehaviour
 		
 		if ( enemiesArray == null )
 		{
+			AddScore(-1);
+			RefreshScoreUI();
+			UpdatePrevHighScore();
 			SetLevel(Title.titleSelection);
 			LoadEnemies();
 		}
@@ -57,6 +63,9 @@ public class GameCore : MonoBehaviour
 		
 		if ( !IsPaused() && enemiesHidden)
 			HideEnemies( false );
+		
+		if ( scoreRefresh )
+			RefreshScoreUI();
 	}
 	
 	void OnPauseButtonClick()
@@ -129,5 +138,31 @@ public class GameCore : MonoBehaviour
 	void SetLevel(int idx)
 	{
 		levelValues = Resources.Load<LevelMetaData>(STR_LEVELMETADATA_FILENAME + "_" + idx);
+	}
+	
+	public static int GetPrevHighScore() { return prevHighScore; }
+	public static int GetHighScore() { return highScore; }
+	public static int GetScore() { return score; }
+	
+	static void UpdatePrevHighScore() { prevHighScore = highScore; }
+	public static void SetHighScore( int hs ) { highScore = hs; }
+	public static void AddScore( int s )
+	{
+		if ( s < 0 )
+		{
+			score = 0;
+			return;
+		}
+		
+		score += s;
+		if ( score > highScore )
+			SetHighScore( score );
+	}
+	
+	void RefreshScoreUI()
+	{
+		scoreRefresh = false;
+		Text scoreBuffer = textScore.GetComponent<Text>();
+		scoreBuffer.text = "Score: " + GetScore();
 	}
 }

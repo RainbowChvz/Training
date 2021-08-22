@@ -42,10 +42,14 @@ public class Enemy : MonoBehaviour
 		
 			collisionCooldown = Stopwatch.StartNew();
 			enemyRemainingHealth--;
+			GameCore.AddScore( GameCore.INT_SCORE_POINTS_PER_HP );
 		}
 		
 		if ( enemyRemainingHealth <= 0 )
+		{
 			Destroy( gameObject );
+			GameCore.scoreRefresh = true;
+		}
 		
 		if ( collideWith.gameObject.name == GameCore.STR_GAMEOBJ_NAME_HERO )
 		{
