@@ -65,7 +65,11 @@ public class GameCore : MonoBehaviour
 			HideEnemies( false );
 		
 		if ( scoreRefresh )
+		{
 			RefreshScoreUI();
+			if ( GameObject.FindWithTag( STR_GAMEOBJ_NAME_ENEMY ) == null )
+				SceneManager.LoadScene( GameCore.STR_SCENE_END, LoadSceneMode.Single );
+		}
 	}
 	
 	void OnPauseButtonClick()
