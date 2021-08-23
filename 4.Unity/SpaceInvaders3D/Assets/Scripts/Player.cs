@@ -85,6 +85,6 @@ public class Player : MonoBehaviour
 		GameObject shot = Instantiate(Bullet1, transform.position, Quaternion.identity);
 		shot.GetComponent<Rigidbody>().AddForce(Vector3.up * 1500);
 		shotDelay = Stopwatch.StartNew();
-		Destroy(shot, 1);
+		Destroy(shot, 2);
 	}
 }
