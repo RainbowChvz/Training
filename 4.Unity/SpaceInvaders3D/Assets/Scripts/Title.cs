@@ -28,6 +28,12 @@ public class Title : MonoBehaviour
 		btn2.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_ABOUT);});
 		btn3.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_EXIT);});
 	}
+	
+	void Update()
+	{
+		if ( Input.GetKeyDown(KeyCode.Escape) )
+			SceneManager.LoadScene( GameCore.STR_SCENE_EXITCONFIRM, LoadSceneMode.Single );
+	}
 
 	void OnButtonClick(ButtonIndex i)
 	{
@@ -43,8 +49,8 @@ public class Title : MonoBehaviour
 				nextScene = GameCore.STR_SCENE_CREDITS;
 				break;
 			case ButtonIndex.IDX_BUTTON_EXIT:
-				Application.Quit();
-				return;
+				nextScene = GameCore.STR_SCENE_EXITCONFIRM;
+				break;
 		}
 		
 		if ( nextScene != null )

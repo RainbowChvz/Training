@@ -20,6 +20,7 @@ public class GameCore : MonoBehaviour
 	public const string	STR_SCENE_CREDITS			= "3.2_Credits";
 	public const string	STR_SCENE_END				= "4_End";
 	public const string	STR_SCENE_PAUSE				= "5_Pause";
+	public const string	STR_SCENE_EXITCONFIRM		= "6_ExitConfirmation";
 	
 	public const string	STR_LEVELMETADATA_FILENAME	= "Level";
 	public const string	STR_LEVELMETADATA_MENUENTRY	= "Space Invaders/Level";
