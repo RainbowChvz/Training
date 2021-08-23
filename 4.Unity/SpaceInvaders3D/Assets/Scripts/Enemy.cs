@@ -9,13 +9,15 @@ public class Enemy : MonoBehaviour
 	CharacterController enemy;
 	Renderer enemyRenderer;
 	
-	int enemyHealth;
-	int enemyRemainingHealth;
+	int enemyHealth, enemyRemainingHealth;
 	Material enemyMaterial;
 	
-	// Vector3 distance = Vector3.zero;
-	Vector3 distance = new Vector3(0, -1, 0);
+	// Vector3 movement = Vector3.zero;
+	// Vector3 movement = new Vector3(0, -1, 0);
+	Vector3 movement;
 	Stopwatch collisionCooldown = new Stopwatch();
+	
+	const float enemySpeed = 0.5f;
 	
     // Start is called before the first frame update
     protected void Start()
@@ -28,8 +30,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
-		distance = transform.TransformDirection(distance);
-		enemy.Move(distance * Time.deltaTime);
+		movement = new Vector3(Mathf.Sin(Time.time)*2, -1, 0);
+		movement = transform.TransformDirection(movement);
+		enemy.Move(movement * Time.deltaTime * enemySpeed);
     }
 	
 	void OnTriggerEnter( Collider collideWith )
