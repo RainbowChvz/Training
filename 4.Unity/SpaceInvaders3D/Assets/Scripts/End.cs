@@ -33,7 +33,8 @@ public class End : MonoBehaviour
 	{
 		if ( increaseScoreText < GameCore.GetScore() )
 		{
-			if ( ++increaseScoreText % 10 == 0 || increaseScoreText == GameCore.GetScore() )
+			increaseScoreText += 5;
+			if ( increaseScoreText % 10 == 0 || increaseScoreText == GameCore.GetScore() )
 			{
 				scoreBuffer = textScore.GetComponent<Text>();
 				scoreBuffer.text = "Score: " + (increaseScoreText);
