@@ -28,19 +28,23 @@ public class GameCore : MonoBehaviour
 	public const int	INT_ENEMY_GREEN_1HP			= 1;
 	public const int	INT_ENEMY_BLUE_2HP			= 2;
 	public const int	INT_ENEMY_RED_3HP			= 3;
+	
 	public const int	INT_SCORE_POINTS_PER_HP		= 10;
+	public const int	INT_SCORE_MULTIPLIER		= 3;
 	// CONSTANTS end
 
 	public GameObject[] enemies = new GameObject[3];
 	GameObject[] enemiesArray;
-	public GameObject buttonPause, textScore;
+	public GameObject buttonPause, textScore, textMultiplier;
 	public static bool scoreRefresh;
 	
 	LevelMetaData levelValues;
-	
 	System.Random RNG = null;
+	
+	
 	static bool gamePaused, enemiesHidden;
 	static int score, highScore, prevHighScore;
+	static string strMultiplier;
 	
 	void Start()
 	{
@@ -151,12 +155,21 @@ public class GameCore : MonoBehaviour
 	
 	static void UpdatePrevHighScore() { prevHighScore = highScore; }
 	public static void SetHighScore( int hs ) { highScore = hs; }
-	public static void AddScore( int s )
+	public static void AddScore( int s, bool multiplierKill = false )
 	{
 		if ( s < 0 )
 		{
 			score = 0;
 			return;
+		}
+		
+		scoreRefresh = true;
+		
+		strMultiplier = "";
+		if ( multiplierKill )
+		{
+			s *= INT_SCORE_MULTIPLIER;
+			strMultiplier = "x" + INT_SCORE_MULTIPLIER;
 		}
 		
 		score += s;
@@ -167,7 +180,10 @@ public class GameCore : MonoBehaviour
 	void RefreshScoreUI()
 	{
 		scoreRefresh = false;
-		Text scoreBuffer = textScore.GetComponent<Text>();
-		scoreBuffer.text = "Score: " + GetScore();
+		Text buff = textScore.GetComponent<Text>();
+		buff.text = "Score: " + GetScore();
+		
+		buff = textMultiplier.GetComponent<Text>();
+		buff.text = strMultiplier;
 	}
 }
