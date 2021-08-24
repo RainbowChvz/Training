@@ -5,12 +5,13 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	public GameObject Bullet1;
+	public GameObject[] ammoTypes;
 	Stopwatch shotDelay;
-	
 	CharacterController ship;
 	float motionInput;
 	Vector3 distance = Vector3.zero;
+	
+	static int playerAmmo = 0; //0 = default, 1 = bar, 2 = bomb
 	
     // Start is called before the first frame update
     void Start()
@@ -79,12 +80,20 @@ public class Player : MonoBehaviour
 	
 	void Shoot()
 	{
-		if ( shotDelay.IsRunning && shotDelay.ElapsedMilliseconds < 100 )
-			return;
+		if ( shotDelay.IsRunning )
+			if ( shotDelay.ElapsedMilliseconds < 100 || ( shotDelay.ElapsedMilliseconds < 1000 && playerAmmo == 2) )
+				return;
+		
+		var ammo = ammoTypes[playerAmmo];
 
-		GameObject shot = Instantiate(Bullet1, transform.position, Quaternion.identity);
+		GameObject shot = Instantiate(ammo, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
 		shot.GetComponent<Rigidbody>().AddForce(Vector3.up * 1500);
 		shotDelay = Stopwatch.StartNew();
 		Destroy(shot, 2);
+	}
+	
+	public static void SetAmmo(int idx)
+	{
+		playerAmmo = idx;
 	}
 }

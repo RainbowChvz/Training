@@ -9,7 +9,8 @@ public class GameCore : MonoBehaviour
 	// CONSTANTS
 	public const string	STR_GAMEOBJ_NAME_HERO		= "Player";
 	public const string	STR_GAMEOBJ_NAME_ENEMY		= "Enemy";
-	public const string	STR_GAMEOBJ_TAG_AMMO		= "Bullet1";
+	public const string	STR_GAMEOBJ_TAG_AMMO		= "Ammo";
+	public const string	STR_GAMEOBJ_TAG_SPECIAL2	= "Bomb";
 	
 	public const string	STR_AXIS_DIRECTION_X		= "Horizontal";
 	public const string	STR_AXIS_DIRECTION_Y		= "Vertical";
@@ -39,7 +40,7 @@ public class GameCore : MonoBehaviour
 	public static bool scoreRefresh;
 	
 	LevelMetaData levelValues;
-	System.Random RNG = null;
+	static System.Random RNG = null;
 	
 	
 	static bool gamePaused, enemiesHidden;
@@ -53,7 +54,8 @@ public class GameCore : MonoBehaviour
 		
 		if ( enemiesArray == null )
 		{
-			AddScore(-1);
+			AddScore(0);
+			Player.SetAmmo(0);
 			RefreshScoreUI();
 			UpdatePrevHighScore();
 			SetLevel(Title.titleSelection);
@@ -121,11 +123,7 @@ public class GameCore : MonoBehaviour
 	
 	GameObject GetRandomEnemy()
 	{
-		if ( RNG == null )
-			RNG = new System.Random();
-		
-		int randomEnemy = RNG.Next( 0, 3 );
-		return enemies[randomEnemy];
+		return enemies[GetRandomNumber( 0, 3 )];
 	}
 	
 	public static void OnASceneLoaded(Scene scene, LoadSceneMode mode)
@@ -157,7 +155,7 @@ public class GameCore : MonoBehaviour
 	public static void SetHighScore( int hs ) { highScore = hs; }
 	public static void AddScore( int s, bool multiplierKill = false )
 	{
-		if ( s < 0 )
+		if ( s <= 0 )
 		{
 			score = 0;
 			return;
@@ -185,5 +183,13 @@ public class GameCore : MonoBehaviour
 		
 		buff = textMultiplier.GetComponent<Text>();
 		buff.text = strMultiplier;
+	}
+	
+	public static int GetRandomNumber( int min, int max )
+	{
+		if ( RNG == null )
+			RNG = new System.Random();
+		
+		return RNG.Next( min , max );
 	}
 }

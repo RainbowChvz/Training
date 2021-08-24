@@ -39,24 +39,33 @@ public class Enemy : MonoBehaviour
 	{		
 		if ( collideWith.gameObject.CompareTag( GameCore.STR_GAMEOBJ_TAG_AMMO ) )
 		{
-			Destroy( collideWith.gameObject );
 			if ( IsCoolingDown () )
 				return;
-		
 			collisionCooldown = Stopwatch.StartNew();
-			enemyRemainingHealth--;
-		}
-		
-		if ( enemyRemainingHealth <= 0 )
-		{
-			Destroy( gameObject );
-			GameCore.AddScore( enemyHealth * GameCore.INT_SCORE_POINTS_PER_HP, transform.position.y > 10 );
+			
+			if ( collideWith.gameObject.name.Contains( GameCore.STR_GAMEOBJ_TAG_SPECIAL2 ) )
+				enemyRemainingHealth = 0;
+			else
+			{
+				enemyRemainingHealth--;
+				Destroy( collideWith.gameObject );
+			}
 		}
 		
 		if ( collideWith.gameObject.name == GameCore.STR_GAMEOBJ_NAME_HERO )
 		{
 			Destroy( collideWith.gameObject );
 			SceneManager.LoadScene( GameCore.STR_SCENE_END, LoadSceneMode.Single );
+			return;
+		}
+		
+		if ( enemyRemainingHealth <= 0 )
+		{
+			if ( GameCore.GetRandomNumber( 0, 6 ) == 5 ) // 20% chance that the enemy drops a special ammo.
+				Player.SetAmmo( GameCore.GetRandomNumber( 1, 3 ));
+			GameCore.AddScore( enemyHealth * GameCore.INT_SCORE_POINTS_PER_HP, transform.position.y > 10 );
+			
+			Destroy( gameObject );
 		}
 	}
 	

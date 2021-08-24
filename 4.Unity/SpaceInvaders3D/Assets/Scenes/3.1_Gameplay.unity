@@ -943,7 +943,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b443b02ab3dec2d4691b29119e7e25b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet1: {fileID: 2437205831884442168, guid: b30a2ee54ad1f464da37bb3a9386ebe6, type: 3}
+  ammoTypes:
+  - {fileID: 2437205831884442168, guid: b30a2ee54ad1f464da37bb3a9386ebe6, type: 3}
+  - {fileID: 4734872238252687907, guid: 541409fc19b015e43b33cfd67fba07ad, type: 3}
+  - {fileID: 6418063123705157505, guid: fd736a7734da7b44888dd2eb52dd6aa5, type: 3}
 --- !u!143 &1449310331
 CharacterController:
   m_ObjectHideFlags: 0
