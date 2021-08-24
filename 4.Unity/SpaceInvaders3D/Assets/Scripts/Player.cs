@@ -53,6 +53,9 @@ public class Player : MonoBehaviour
 			move = shoot = teleport = true;
 		}
 		
+		if ( Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButton(1) || Input.touchCount >= 3 )
+			SetAmmo(0);
+		
 		if ( teleport && distance.y > Screen.height/4)
 			return;
 		
