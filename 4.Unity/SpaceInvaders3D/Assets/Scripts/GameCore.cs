@@ -93,7 +93,7 @@ public class GameCore : MonoBehaviour
 		{
 			enemiesArray[i] = Instantiate(GetRandomEnemy(), levelValues.enemyLayout[currentEnemyCoordIndex], Quaternion.identity);
 			// enemiesArray[i].name = levelValues.enemyPrefab + i+1;
-			enemiesArray[i].name = GameCore.STR_GAMEOBJ_NAME_ENEMY + i+1;
+			enemiesArray[i].name = enemiesArray[i].name.Substring( 0, enemiesArray[i].name.IndexOf( "(" ) ) + i;
 			currentEnemyCoordIndex = (currentEnemyCoordIndex + 1) % levelValues.enemyLayout.Length;
 		}
 	}

@@ -80,13 +80,14 @@ public class Enemy : MonoBehaviour
 	
 	int GetHealth()
 	{
-		string enemyColor = enemyRenderer.material.ToString();
+		// string enemyColor = enemyRenderer.material.ToString();
+		string enemyColor = gameObject.name;
 		
-		if ( enemyColor.StartsWith("Green") )
+		if ( enemyColor.Contains("Green") )
 			return 1;
-		else if ( enemyColor.StartsWith("Blue") )
+		else if ( enemyColor.Contains("Blue") )
 			return 2;
-		else if ( enemyColor.StartsWith("Red") )
+		else if ( enemyColor.Contains("Red") )
 			return 3;
 		
 		return 0;
