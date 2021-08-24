@@ -155,6 +155,7 @@ public class GameCore : MonoBehaviour
 	public static void SetHighScore( int hs ) { highScore = hs; }
 	public static void AddScore( int s, bool multiplierKill = false )
 	{
+		strMultiplier = "";
 		if ( s <= 0 )
 		{
 			score = 0;
@@ -163,7 +164,6 @@ public class GameCore : MonoBehaviour
 		
 		scoreRefresh = true;
 		
-		strMultiplier = "";
 		if ( multiplierKill )
 		{
 			s *= INT_SCORE_MULTIPLIER;
