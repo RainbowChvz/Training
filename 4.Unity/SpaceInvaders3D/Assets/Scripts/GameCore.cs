@@ -32,6 +32,7 @@ public class GameCore : MonoBehaviour
 	
 	public const int	INT_SCORE_POINTS_PER_HP		= 10;
 	public const int	INT_SCORE_MULTIPLIER		= 3;
+	public const int	INT_SCORE_MULTIPLIER_OFFSET	= 15;
 	// CONSTANTS end
 
 	public GameObject[] enemies = new GameObject[3];

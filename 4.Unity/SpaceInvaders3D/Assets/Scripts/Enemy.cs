@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
 		{
 			if ( GameCore.GetRandomNumber( 0, 6 ) == 5 ) // 20% chance that the enemy drops a special ammo.
 				Player.SetAmmo( GameCore.GetRandomNumber( 1, 3 ));
-			GameCore.AddScore( enemyHealth * GameCore.INT_SCORE_POINTS_PER_HP, transform.position.y > 10 );
+			GameCore.AddScore( enemyHealth * GameCore.INT_SCORE_POINTS_PER_HP, transform.position.y > GameCore.INT_SCORE_MULTIPLIER_OFFSET );
 			
 			Destroy( gameObject );
 		}
