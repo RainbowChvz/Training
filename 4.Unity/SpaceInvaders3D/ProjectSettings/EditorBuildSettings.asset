@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExitConfirmation.unity
     guid: e04bb3d9163e773429cfc5fddb2409cc
+  - enabled: 1
+    path: Assets/Scenes/Help.unity
+    guid: 31336028410123644bf779857f77a568
   m_configObjects: {}

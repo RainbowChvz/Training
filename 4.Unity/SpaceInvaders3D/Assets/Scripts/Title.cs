@@ -6,13 +6,14 @@ using UnityEngine.UI;
 
 public class Title : MonoBehaviour
 {
-	public GameObject buttonLevel0, buttonLevel1, buttonAbout, buttonExit;
+	public GameObject buttonLevel0, buttonLevel1, buttonAbout, buttonExit, buttonHelp;
 	enum ButtonIndex
 	{
 		IDX_BUTTON_LEVEL0,
 		IDX_BUTTON_LEVEL1,
 		IDX_BUTTON_ABOUT,
-		IDX_BUTTON_EXIT
+		IDX_BUTTON_EXIT,
+		IDX_BUTTON_HELP
 	};
 	
 	public static int titleSelection;
@@ -22,11 +23,13 @@ public class Title : MonoBehaviour
 		Button btn1 = buttonLevel1.GetComponent<Button>();
 		Button btn2 = buttonAbout.GetComponent<Button>();
 		Button btn3 = buttonExit.GetComponent<Button>();
+		Button btn4 = buttonHelp.GetComponent<Button>();
 		
 		btn0.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_LEVEL0);});
 		btn1.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_LEVEL1);});
 		btn2.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_ABOUT);});
 		btn3.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_EXIT);});
+		btn4.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_HELP);});
 	}
 	
 	void Update()
@@ -50,6 +53,9 @@ public class Title : MonoBehaviour
 				break;
 			case ButtonIndex.IDX_BUTTON_EXIT:
 				nextScene = GameCore.STR_SCENE_EXITCONFIRM;
+				break;
+			case ButtonIndex.IDX_BUTTON_HELP:
+				nextScene = GameCore.STR_SCENE_HELP;
 				break;
 		}
 		
