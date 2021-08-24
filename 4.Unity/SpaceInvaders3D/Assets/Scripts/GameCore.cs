@@ -80,6 +80,19 @@ public class GameCore : MonoBehaviour
 				SceneManager.LoadScene( GameCore.STR_SCENE_END, LoadSceneMode.Single );
 		}
 	}
+    
+	void OnApplicationFocus(bool hasFocus)
+    {
+        if ( !hasFocus )
+			if ( !IsPaused() )
+				PauseGame();
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if ( !IsPaused() )
+			PauseGame();
+    }
 	
 	void OnPauseButtonClick()
 	{
