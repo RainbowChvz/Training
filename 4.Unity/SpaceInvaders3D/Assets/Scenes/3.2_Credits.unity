@@ -1321,7 +1321,8 @@ MonoBehaviour:
   m_Text: "Developer:\nEduardo Chavez\n\nQuality Assurance:\nEduardo Chavez\n\nProject
     Manager:\nEduardo Chavez\n\nLocalization:\nEduardo Chavez\n\nUI/UX Designer:\nEduardo
     Chavez\n\nButtons & Fonts:\nSimple Button Set 02\nBy: \rThat Witch Design (FREE
-    in Asset Store)\n\nShip Model:\nFree Space Ships\nBy: 1MAFX (FREE in Asset Store)\n\nThanks
+    in Asset Store)\n\nPlayer Ship Model:\nFree Space Ships\nBy: 1MAFX (FREE in Asset
+    Store)\n\nEnemy Models:\nAlien Ships Pack\r\nBy: Autarca (FREE in Asset Store)\n\nThanks
     for trying my app!"
 --- !u!222 &1513032702
 CanvasRenderer:
