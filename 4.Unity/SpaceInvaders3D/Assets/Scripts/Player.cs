@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
 		}
 		else
 		{
-			newPosition.x = ( ( newPosition.x - (Screen.width/2) ) / ( Screen.width/2 ) ) / transform.localScale.x*4;
+			newPosition.x = ( ( newPosition.x - (Screen.width/2) ) / ( Screen.width/2 ) ) / transform.localScale.x*3;
 			newPosition.y = 0.0f;
 			transform.position = newPosition;
 		}
