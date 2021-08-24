@@ -7,10 +7,17 @@ using UnityEngine.UI;
 public class Credits : MonoBehaviour
 {
 	public GameObject buttonBack;
+	public Text credits;
+	
 	void Start()
 	{
 		Button butt = buttonBack.GetComponent<Button>();
 		butt.onClick.AddListener(onBackButtonClick);
+		
+		credits.text = Application.productName + "\n"
+						+ "Version: " + Application.version + "\n"
+						+ "\n"
+						+ credits.text;
 	}
 	
     void Update()
