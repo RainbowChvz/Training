@@ -30,12 +30,20 @@ public class End : MonoBehaviour
     }
 	
 	void Update()
-	{
+	{	
 		if ( increaseScoreText < GameCore.GetScore() )
 		{
-			increaseScoreText += 5;
+			if ( !Input.GetMouseButton(0) && Input.touchCount <= 0 )
+				increaseScoreText += GameCore.INT_SCORE_POINTS_PER_HP;
+			else
+				increaseScoreText = GameCore.GetScore();
+				
+			
+			if ( increaseScoreText > GameCore.GetScore() )
+				increaseScoreText = GameCore.GetScore();
+			
 			if ( increaseScoreText % 10 == 0 || increaseScoreText == GameCore.GetScore() )
-			{
+			{	
 				scoreBuffer = textScore.GetComponent<Text>();
 				scoreBuffer.text = "Score: " + (increaseScoreText);
 				
