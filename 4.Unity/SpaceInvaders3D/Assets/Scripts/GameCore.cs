@@ -91,7 +91,8 @@ public class GameCore : MonoBehaviour
 
 		for (int i = 0; i < levelValues.enemyAmount; i++)
 		{
-			enemiesArray[i] = Instantiate(GetRandomEnemy(), levelValues.enemyLayout[currentEnemyCoordIndex], Quaternion.identity);
+			var prefabObject = GetRandomEnemy();
+			enemiesArray[i] = Instantiate(prefabObject, levelValues.enemyLayout[currentEnemyCoordIndex], prefabObject.transform.rotation);
 			// enemiesArray[i].name = levelValues.enemyPrefab + i+1;
 			enemiesArray[i].name = enemiesArray[i].name.Substring( 0, enemiesArray[i].name.IndexOf( "(" ) ) + i;
 			currentEnemyCoordIndex = (currentEnemyCoordIndex + 1) % levelValues.enemyLayout.Length;
