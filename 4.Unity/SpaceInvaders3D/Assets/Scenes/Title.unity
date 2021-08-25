@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 20078949}
   - component: {fileID: 20078948}
   m_Layer: 5
-  m_Name: ButtonText
+  m_Name: TextGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 863671932}
   - component: {fileID: 863671931}
   m_Layer: 5
-  m_Name: ButtonText
+  m_Name: TextBrick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1398,7 +1398,7 @@ GameObject:
   - component: {fileID: 1696680160}
   - component: {fileID: 1696680159}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TextStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
