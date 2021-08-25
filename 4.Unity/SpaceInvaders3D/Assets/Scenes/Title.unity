@@ -1381,11 +1381,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d4019a6e219be440b3c8242a2d3f909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonLevel0: {fileID: 687622357}
-  buttonLevel1: {fileID: 1004656971}
-  buttonAbout: {fileID: 366949940}
-  buttonExit: {fileID: 1697966989}
-  buttonHelp: {fileID: 1183059194}
+  buttonLevel0: {fileID: 687622359}
+  buttonLevel1: {fileID: 1004656973}
+  buttonAbout: {fileID: 366949942}
+  buttonExit: {fileID: 1697966991}
+  buttonHelp: {fileID: 1183059195}
 --- !u!1 &1696680157
 GameObject:
   m_ObjectHideFlags: 0

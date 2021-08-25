@@ -702,8 +702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce42596d8083684bb1407505590d1e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonResume: {fileID: 1839258908}
-  buttonTitleScreen: {fileID: 1383098432}
+  buttonResume: {fileID: 1839258910}
+  buttonTitleScreen: {fileID: 1383098434}
 --- !u!4 &993387885
 Transform:
   m_ObjectHideFlags: 0

@@ -37,22 +37,22 @@ public class GameCore : MonoBehaviour
 	// CONSTANTS end
 
 	public GameObject[] enemies = new GameObject[3];
+	public Button buttonPause;
+	public Text textScore, textMultiplier;
+	
+	public static bool scoreRefresh;	
+	
 	GameObject[] enemiesArray;
-	public GameObject buttonPause, textScore, textMultiplier;
-	public static bool scoreRefresh;
-	
 	LevelMetaData levelValues;
+
 	static System.Random RNG = null;
-	
-	
 	static bool gamePaused, enemiesHidden;
 	static int score, highScore, prevHighScore;
 	static string strMultiplier;
 	
 	void Start()
 	{
-		Button btn0 = buttonPause.GetComponent<Button>();
-		btn0.onClick.AddListener(OnPauseButtonClick);
+		buttonPause.onClick.AddListener(OnPauseButtonClick);
 		
 		if ( enemiesArray == null )
 		{
@@ -194,11 +194,8 @@ public class GameCore : MonoBehaviour
 	void RefreshScoreUI()
 	{
 		scoreRefresh = false;
-		Text buff = textScore.GetComponent<Text>();
-		buff.text = "Score: " + GetScore();
-		
-		buff = textMultiplier.GetComponent<Text>();
-		buff.text = strMultiplier;
+		textScore.text = "Score: " + GetScore();
+		textMultiplier.text = strMultiplier;
 	}
 	
 	public static int GetRandomNumber( int min, int max )

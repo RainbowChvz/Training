@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class End : MonoBehaviour
 {
-	public GameObject buttonRetry, buttonTitleScreen, textScore, textHighScore;
+	public Button buttonRetry, buttonTitleScreen;
+	public Text textScore, textHighScore;
+	
 	int increaseScoreText;
 	Text scoreBuffer;
 	
@@ -21,11 +23,10 @@ public class End : MonoBehaviour
         Button btn0 = buttonRetry.GetComponent<Button>();
 		Button btn1 = buttonTitleScreen.GetComponent<Button>();
 		
-		btn0.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_RETRY);});
-		btn1.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_TITLE_SCREEN);});
+		buttonRetry.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_RETRY);});
+		buttonTitleScreen.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_TITLE_SCREEN);});
 		
-		Text scoreBuffer = textHighScore.GetComponent<Text>();
-		scoreBuffer.text = "High Score: " + GameCore.GetPrevHighScore();
+		textHighScore.text = "High Score: " + GameCore.GetPrevHighScore();
 		
     }
 	
@@ -44,13 +45,11 @@ public class End : MonoBehaviour
 			
 			if ( increaseScoreText % 10 == 0 || increaseScoreText == GameCore.GetScore() )
 			{	
-				scoreBuffer = textScore.GetComponent<Text>();
-				scoreBuffer.text = "Score: " + (increaseScoreText);
+				textScore.text = "Score: " + (increaseScoreText);
 				
 				if ( increaseScoreText > GameCore.GetPrevHighScore() )
 				{
-					scoreBuffer = textHighScore.GetComponent<Text>();
-					scoreBuffer.text = "High Score: " + increaseScoreText + "   NEW!!!";
+					textHighScore.text = "High Score: " + increaseScoreText + "   NEW!!!";
 				}
 			}
 		}

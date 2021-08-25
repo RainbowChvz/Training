@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class Credits : MonoBehaviour
 {
-	public GameObject buttonBack;
+	public Button buttonBack;
 	public Text credits;
 	
 	void Start()
 	{
-		Button butt = buttonBack.GetComponent<Button>();
-		butt.onClick.AddListener(onBackButtonClick);
+		buttonBack.onClick.AddListener(onBackButtonClick);
 		
 		credits.text = Application.productName + "\n"
 						+ "Version: " + Application.version + "\n"

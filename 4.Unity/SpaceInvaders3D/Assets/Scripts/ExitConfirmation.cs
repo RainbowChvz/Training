@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ExitConfirmation : MonoBehaviour
 {
-	public GameObject buttonNo, buttonYes;
+	public Button buttonNo, buttonYes;
 	
 	enum ButtonIndex
 	{
@@ -16,11 +16,8 @@ public class ExitConfirmation : MonoBehaviour
 	
 	void Start()
 	{
-		Button btn0 = buttonNo.GetComponent<Button>();
-		Button btn1 = buttonYes.GetComponent<Button>();
-		
-		btn0.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_NO);});
-		btn1.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_YES);});
+		buttonNo.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_NO);});
+		buttonYes.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_YES);});
 	}
 	
 	void Update()

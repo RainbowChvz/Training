@@ -1123,7 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfd66db12f4f1f448970c2b506a71e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonBack: {fileID: 969587202}
+  buttonBack: {fileID: 969587204}
   credits: {fileID: 1513032701}
 --- !u!4 &1336270073
 Transform:

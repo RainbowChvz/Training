@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Title : MonoBehaviour
 {
-	public GameObject buttonLevel0, buttonLevel1, buttonAbout, buttonExit, buttonHelp;
+	public Button buttonLevel0, buttonLevel1, buttonAbout, buttonExit, buttonHelp;
 	enum ButtonIndex
 	{
 		IDX_BUTTON_LEVEL0,
@@ -19,17 +19,11 @@ public class Title : MonoBehaviour
 	public static int titleSelection;
 	
 	void Start () {
-		Button btn0 = buttonLevel0.GetComponent<Button>();
-		Button btn1 = buttonLevel1.GetComponent<Button>();
-		Button btn2 = buttonAbout.GetComponent<Button>();
-		Button btn3 = buttonExit.GetComponent<Button>();
-		Button btn4 = buttonHelp.GetComponent<Button>();
-		
-		btn0.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_LEVEL0);});
-		btn1.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_LEVEL1);});
-		btn2.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_ABOUT);});
-		btn3.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_EXIT);});
-		btn4.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_HELP);});
+		buttonLevel0.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_LEVEL0);});
+		buttonLevel1.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_LEVEL1);});
+		buttonAbout.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_ABOUT);});
+		buttonHelp.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_HELP);});
+		buttonExit.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_EXIT);});
 	}
 	
 	void Update()
@@ -51,11 +45,11 @@ public class Title : MonoBehaviour
 			case ButtonIndex.IDX_BUTTON_ABOUT:
 				nextScene = GameCore.STR_SCENE_CREDITS;
 				break;
-			case ButtonIndex.IDX_BUTTON_EXIT:
-				nextScene = GameCore.STR_SCENE_EXITCONFIRM;
-				break;
 			case ButtonIndex.IDX_BUTTON_HELP:
 				nextScene = GameCore.STR_SCENE_HELP;
+				break;
+			case ButtonIndex.IDX_BUTTON_EXIT:
+				nextScene = GameCore.STR_SCENE_EXITCONFIRM;
 				break;
 		}
 		

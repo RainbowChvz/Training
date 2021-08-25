@@ -702,10 +702,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607cfa2abff72f749926692d84d01947, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonRetry: {fileID: 1839258908}
-  buttonTitleScreen: {fileID: 1383098432}
-  textScore: {fileID: 1667164138}
-  textHighScore: {fileID: 1408575296}
+  buttonRetry: {fileID: 1839258910}
+  buttonTitleScreen: {fileID: 1383098434}
+  textScore: {fileID: 1667164140}
+  textHighScore: {fileID: 1408575298}
 --- !u!4 &993387885
 Transform:
   m_ObjectHideFlags: 0

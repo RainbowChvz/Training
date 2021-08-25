@@ -170,9 +170,9 @@ MonoBehaviour:
   - {fileID: 3757702477956620523, guid: 4f491810ad61c8645a2e1d560763ef9e, type: 3}
   - {fileID: 8248580509091800890, guid: 3fe78da74e44f084eb4623089d79c8b1, type: 3}
   - {fileID: 1263383336167883188, guid: ef55dbfd2b2554f4e86282337456bdf9, type: 3}
-  buttonPause: {fileID: 593879115}
-  textScore: {fileID: 2012115383}
-  textMultiplier: {fileID: 695972029}
+  buttonPause: {fileID: 593879117}
+  textScore: {fileID: 2012115385}
+  textMultiplier: {fileID: 695972031}
 --- !u!1 &129568542
 GameObject:
   m_ObjectHideFlags: 0

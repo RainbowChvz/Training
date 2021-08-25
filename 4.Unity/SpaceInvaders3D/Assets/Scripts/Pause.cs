@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-	public GameObject buttonResume, buttonTitleScreen;
+	public Button buttonResume, buttonTitleScreen;
 	enum ButtonIndex
 	{
 		IDX_BUTTON_RESUME,
@@ -20,11 +20,8 @@ public class Pause : MonoBehaviour
 	
     void Start()
     {
-        Button btn0 = buttonResume.GetComponent<Button>();
-		Button btn1 = buttonTitleScreen.GetComponent<Button>();
-		
-		btn0.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_RESUME);});
-		btn1.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_TITLE_SCREEN);});
+		buttonResume.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_RESUME);});
+		buttonTitleScreen.onClick.AddListener(delegate{OnButtonClick(ButtonIndex.IDX_BUTTON_TITLE_SCREEN);});
     }
 	
 	void Update()
