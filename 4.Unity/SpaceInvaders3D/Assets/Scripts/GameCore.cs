@@ -124,6 +124,10 @@ public class GameCore : MonoBehaviour
 	void HideEnemies(bool hidden)
 	{
 		enemiesHidden = hidden;
+		
+		if ( enemiesArray == null )
+			return;
+
 		for (int i = 0; i < enemiesArray.Length; i++)
 			if (enemiesArray[i] != null)
 				enemiesArray[i].SetActive( !hidden );
