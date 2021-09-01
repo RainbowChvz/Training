@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
 			}
 		}
 		
-		if ( collideWith.gameObject.name == GameCore.STR_GAMEOBJ_NAME_HERO )
+		if ( collideWith.gameObject.name.Contains( GameCore.STR_GAMEOBJ_NAME_HERO ) )
 		{
 			Destroy( collideWith.gameObject );
 			SceneManager.LoadScene( GameCore.STR_SCENE_END, LoadSceneMode.Single );

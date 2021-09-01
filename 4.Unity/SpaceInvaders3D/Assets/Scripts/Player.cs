@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 		motionInput = Input.GetAxis( GameCore.STR_AXIS_DIRECTION_X );
 		if ( motionInput != 0 )
 		{
+			if ( transform.rotation.z != 0 )
+				motionInput = -motionInput;
 			distance = new Vector3( motionInput, 0, 0 );
 			move = true;
 		}
@@ -49,7 +51,7 @@ public class Player : MonoBehaviour
 		if ( Input.touchCount > 0 )
 		{
 			Vector2 distanceTouch = Input.GetTouch( Input.touchCount - 1 ).position;
-			distance = new Vector3(distanceTouch.x, distanceTouch.y, 0.0f);
+			distance = new Vector3(distanceTouch.x, transform.position.y, transform.position.z);
 			move = shoot = teleport = true;
 		}
 		
@@ -76,7 +78,7 @@ public class Player : MonoBehaviour
 		else
 		{
 			newPosition.x = ( ( newPosition.x - (Screen.width/2) ) / ( Screen.width/2 ) ) / transform.localScale.x*3;
-			newPosition.y = 0.0f;
+			newPosition.y = transform.position.y;
 			transform.position = newPosition;
 		}
 	}
@@ -89,8 +91,13 @@ public class Player : MonoBehaviour
 		
 		var ammo = ammoTypes[playerAmmo];
 
-		GameObject shot = Instantiate(ammo, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
-		shot.GetComponent<Rigidbody>().AddForce(Vector3.up * 1500);
+		GameObject shot = Instantiate(ammo, transform.position, Quaternion.identity);
+		
+		Vector3 dir = Vector3.up;
+		if ( transform.rotation.z != 0 )
+			dir = Vector3.down;
+
+		shot.GetComponent<Rigidbody>().AddForce(dir * 1500);
 		shotDelay = Stopwatch.StartNew();
 		Destroy(shot, 2);
 	}

@@ -104,7 +104,11 @@ public class GameCore : MonoBehaviour
 
 	void LoadPlayer()
 	{
-		Instantiate(players[0], players[0].transform.position, players[0].transform.rotation);
+		for ( int i = 0; i < players.Count; i++ )
+		{
+			GameObject playerInstance = Instantiate(players[i], players[i].transform.position, players[i].transform.rotation);
+			playerInstance.name = playerInstance.name.Substring( 0, playerInstance.name.IndexOf( "(" ) ) + i;
+		}
 	}
 	
 	void LoadEnemies()
