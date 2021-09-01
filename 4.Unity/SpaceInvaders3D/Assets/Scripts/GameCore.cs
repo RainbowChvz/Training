@@ -37,6 +37,7 @@ public class GameCore : MonoBehaviour
 	// CONSTANTS end
 
 	public GameObject[] enemies = new GameObject[3];
+	public GameObject[] players = new GameObject[1];
 	public Button buttonPause;
 	public Text textScore, textMultiplier;
 	
@@ -56,6 +57,7 @@ public class GameCore : MonoBehaviour
 		
 		if ( enemiesArray == null )
 		{
+			LoadPlayer();
 			AddScore(0);
 			Player.SetAmmo(0);
 			RefreshScoreUI();
@@ -99,6 +101,11 @@ public class GameCore : MonoBehaviour
 		PauseGame();
 	}
 
+	void LoadPlayer()
+	{
+		Instantiate(players[0], players[0].transform.position, players[0].transform.rotation);
+	}
+	
 	void LoadEnemies()
 	{
 		int currentEnemyCoordIndex = 0;
