@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -36,8 +37,8 @@ public class GameCore : MonoBehaviour
 	public const int	INT_SCORE_MULTIPLIER_OFFSET	= 15;
 	// CONSTANTS end
 
-	public GameObject[] enemies = new GameObject[3];
-	public GameObject[] players = new GameObject[1];
+	public List<GameObject> enemies = new List<GameObject>();
+	public List<GameObject> players = new List<GameObject>();
 	public Button buttonPause;
 	public Text textScore, textMultiplier;
 	

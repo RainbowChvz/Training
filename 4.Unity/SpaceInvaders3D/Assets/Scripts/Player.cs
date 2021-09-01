@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-	public GameObject[] ammoTypes;
+	public List<GameObject> ammoTypes = new List<GameObject>();
 	Stopwatch shotDelay;
 	CharacterController ship;
 	float motionInput;
